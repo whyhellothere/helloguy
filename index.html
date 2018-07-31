@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Hello World</title>
+</head>
+  <script src="pixi/pixi.min.js"></script>
+<body bgcolor="ffffff">
+  <script type="text/javascript">
+    
+    let type = "WebGL";
+    if(!PIXI.utils.isWebGLSupported()){
+      type = "canvas";
+    }
+
+    PIXI.utils.sayHello(type);
+
+    //screen dimensions
+    width = 800;    
+    height = 550;
+
+    windowwidth = window.innerWidth;
+    windowheight = window.innerHeight;
+
+    //Create a Pixi Application
+    let app = new PIXI.Application({width: width, height: height});
+
+    let renderer = app.renderer;
+
+    //sets stage to center of screen
+    function resize(){
+      renderer.view.style.position = 'absolute';
+      renderer.view.style.left = ((window.innerWidth - renderer.width) >> 1) + 'px';
+      renderer.view.style.top = ((window.innerHeight - renderer.height) >> 1) + 'px';
+    }
+    resize();
+    // window.addEventListener('resize', resize);
+
+    //Add the canvas that Pixi automatically created for you to the HTML document
+    document.body.appendChild(app.view);
+
+
+  </script>
+</body>
+</html>
